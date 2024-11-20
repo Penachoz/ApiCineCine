@@ -3,16 +3,18 @@ package CineCine.Backend.Service;
 import CineCine.Backend.Model.Review;
 import CineCine.Backend.Repository.IReviewRepository;
 import CineCine.Backend.Repository.IUsuarioRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ReviewService {
-
+    @Autowired
     private final IReviewRepository reviewRepository;
     private final IUsuarioRepository usuarioRepository; // Inyección del repositorio de usuarios
-
+    
     public ReviewService(IReviewRepository reviewRepository, IUsuarioRepository usuarioRepository) {
         this.reviewRepository = reviewRepository;
         this.usuarioRepository = usuarioRepository;
