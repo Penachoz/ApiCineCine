@@ -3,7 +3,6 @@ package CineCine.Backend.Model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,8 +12,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 public class Review {
     @Id
-    private ObjectId id;        // Identificador único
-    private String peliculaId;  // ID de la película asociada (string plano)
-    private ObjectId usuarioId; // ID del usuario que realizó la review
-    private String contenido;   // Contenido de la review
+    private String id;           // Identificador único (puede seguir siendo un String si lo deseas)
+    private String peliculaId;   // ID de la película asociada (string plano)
+    private String usuarioEmail; // Email del usuario que realizó la review
+    private String contenido;    // Contenido de la review
 }

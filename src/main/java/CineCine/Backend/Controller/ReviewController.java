@@ -2,7 +2,7 @@ package CineCine.Backend.Controller;
 
 import CineCine.Backend.Model.Review;
 import CineCine.Backend.Service.ReviewService;
-import org.bson.types.ObjectId;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +24,11 @@ public class ReviewController {
         return reviewService.obtenerReviewsPorPelicula(peliculaId);
     }
 
-    @GetMapping("/usuario/{usuarioId}")
-    public List<Review> obtenerPorUsuario(@PathVariable String usuarioId) {
-        return reviewService.obtenerReviewsPorUsuario(new ObjectId(usuarioId));
+    @GetMapping("/usuario/{usuarioEmail}")
+    public List<Review> obtenerPorUsuario(@PathVariable String usuarioEmail) {
+        return reviewService.obtenerReviewsPorUsuarioEmail(usuarioEmail);
     }
+
 
     @PostMapping("/crearReview")
     public ResponseEntity<Review> crearReview(@RequestBody Review review) {
@@ -35,9 +36,4 @@ public class ReviewController {
         return ResponseEntity.ok(nuevaReview);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarReview(@PathVariable String id) {
-        reviewService.eliminarReview(new ObjectId(id));
-        return ResponseEntity.ok("Review eliminada con éxito.");
-    }
 }
