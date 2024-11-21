@@ -4,7 +4,7 @@ import CineCine.Backend.Model.Usuario;
 import CineCine.Backend.Repository.IUsuarioRepository;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
-
+import java.util.Optional;
 import java.util.List;
 
 @Service
@@ -33,5 +33,9 @@ public class UsuarioService {
 
     public void eliminarUsuario(ObjectId id) {
         usuarioRepository.deleteById(id);
+    }
+    // Nuevo método para obtener un usuario por email
+    public Optional<Usuario> obtenerUsuarioPorEmail(String email) {
+        return usuarioRepository.findByEmail(email);
     }
 }
